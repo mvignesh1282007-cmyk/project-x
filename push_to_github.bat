@@ -1,41 +1,33 @@
 @echo off
 title Push Real AI Projects Suite to GitHub
-color 0b
+color 0a
 echo ===============================================================================
 echo     PUSH 10 REAL AI MANUFACTURING PROJECTS TO GITHUB
 echo ===============================================================================
 echo.
-echo Please enter your GitHub Repository URL (e.g. https://github.com/username/repo-name.git)
-set /p REPO_URL="Repo URL: "
-
-if "%REPO_URL%"=="" (
-    echo [ERROR] No URL provided. Exiting.
-    pause
-    exit /b
-)
-
+echo Target Repository: https://github.com/mvignesh1282007-cmyk/project-x.git
 echo.
-echo Configuring remote origin...
+
 git remote remove origin 2>nul
-git remote add origin %REPO_URL%
+git remote add origin https://github.com/mvignesh1282007-cmyk/project-x.git
 git branch -M main
 
-echo.
-echo Pushing committed files to GitHub...
-echo (If prompted, log in via your browser or paste your GitHub Personal Access Token 'ghp_...')
+echo Uploading 10 projects and documentation to GitHub...
+echo (A browser window will open to authorize your GitHub account if needed)
 echo.
 git push -u origin main
 
 if %ERRORLEVEL% EQU 0 (
     echo.
     echo ===============================================================================
-    echo [SUCCESS] All 10 projects and documentation successfully uploaded to GitHub!
+    echo [SUCCESS] All 10 projects and documentation are now live on GitHub!
+    echo URL: https://github.com/mvignesh1282007-cmyk/project-x
     echo ===============================================================================
 ) else (
     echo.
-    echo [ERROR] Push failed. Please verify that:
-    echo 1. The repository exists on your GitHub account.
-    echo 2. You used a Personal Access Token (ghp_...) instead of your account password.
+    echo [NOTICE] If the push was canceled or failed:
+    echo 1. Ensure you authorized the prompt in your browser.
+    echo 2. Or generate a Personal Access Token at https://github.com/settings/tokens
 )
 echo.
 pause
